@@ -1,44 +1,61 @@
-// import React from 'react';
-
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper, Button } from '@mui/material';
-import { connect } from 'react-redux'; 
+
+import './vviewstudent.css'; // Import your CSS file for styling
 
 const mapStateToProps = (state) => ({
   students: state.students,
 });
 
-const StudentList = ({ students }) => {
- 
+const ViewStudents = ({ students }) => {
   return (
     <div>
-      <h2>Student List</h2>
-      <Link to="/registration-form">
-        <Button variant="contained" color="primary">Add Student</Button>
+      <h2 className="page-title">View Students</h2>
+      <Link to="/registration-form" className="add-student-button">
+        Add Student
       </Link>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              {/* Add other table headers here */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {students.map((student) => (
-              <TableRow key={student.id}>
-                <TableCell>{student.id}</TableCell>
-                <TableCell>
-                  <Link to={`/student/${student.id}`}>{student.name}</Link>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <table className="student-table">
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Father's Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student) => (
+            <tr key={student.id}>
+              <td>
+                <img
+                  src={student.photos[0] ? URL.createObjectURL(student.photos[0]) : ''}
+                  alt={`Student ${student.id}`}
+                  width="50"
+                  height="50"
+                />
+              </td>
+              <td>{student.firstName}</td>
+              <td>{student.lastName}</td>
+              <td>{student.fatherName}</td>
+              <td>{student.email}</td>
+              <td>{student.address}</td>
+              <td>{student.mobile}</td>
+              <td>{student.gender}</td>
+              <td>{student.dob}</td>
+              <td>{student.country}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default connect(mapStateToProps)(StudentList)
+export default connect(mapStateToProps)(ViewStudents);
