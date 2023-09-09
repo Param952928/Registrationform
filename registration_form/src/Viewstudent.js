@@ -41,7 +41,10 @@ const ViewStudents = ({ students }) => {
                   height="50"
                 />
               </td>
-              <td>{student.firstName}</td>
+              <td>
+                {/* Wrap the student's name with a Link to their details page */}
+                <Link to={`/student/${student.id}`}>{student.firstName}</Link>
+              </td>
               <td>{student.lastName}</td>
               <td>{student.fatherName}</td>
               <td>{student.email}</td>
