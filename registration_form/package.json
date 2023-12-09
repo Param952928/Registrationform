@@ -2,7 +2,7 @@
   "name": "registration_form",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Param95292.github.io/Registrationform",
+  "homepage": "https://param952928.github.io/Registrationform",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -18,7 +18,7 @@
     "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
+  "scripts": {  
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
